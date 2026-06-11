@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine Off
+</IfModule>
+
+# Allow only location.php in this directory
+<FilesMatch "^(?!location\.php).+\.php$">
+    Require all denied
+</FilesMatch>

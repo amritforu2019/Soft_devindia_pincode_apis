@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block direct access to config and helper files
+    RewriteRule ^config/ - [F,L]
+    RewriteRule ^helpers/ - [F,L]
+    RewriteRule ^logs/ - [F,L]
+    RewriteRule ^sql/ - [F,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set Referrer-Policy "no-referrer"
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^(\.env|env\.example|\.gitignore)$">
+    Require all denied
+</FilesMatch>

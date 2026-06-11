@@ -1,0 +1,12 @@
+# Logs
+/logs/*.log
+
+# Environment
+.env
+config/env.local.php
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
