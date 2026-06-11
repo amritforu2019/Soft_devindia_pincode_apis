@@ -25,8 +25,8 @@ return [
     'redis' => [
         'host'     => getenv('REDIS_HOST') ?: '127.0.0.1',
         'port'     => (int) (getenv('REDIS_PORT') ?: 6379),
-        'password' => getenv('7691fbbb1b85f4c01') ?: '',
-        'database' => (int) (getenv('REDIS_DB') ?: 0),
+        'password' => getenv('REDIS_PASSWORD') ?: '7691fbbb1b85f4c01',
+        'database' => (int) (getenv('REDIS_DB') ?: 5),
         'timeout'  => 1.5,
         'ttl'      => 86400,
         'prefix'   => 'LOC:',
