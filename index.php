@@ -365,7 +365,7 @@ function e(string $value): string
         <!-- <nav class="nav-group">
             <h4>Reference</h4>
             <a href="#schema">Database Schema</a>
-            <a href="#cache">Redis Cache</a>
+            <a href="#cache"> Cache</a>
             <a href="#config">Configuration</a>
             <a href="#examples">Code Examples</a>
             <a href="#security">Security</a>
@@ -375,11 +375,11 @@ function e(string $value): string
     <main class="main">
         <div class="hero" id="overview">
             <h1>Location Master API</h1>
-            <p>High-performance REST API for Indian location data — States, Cities, Areas, and Pincodes. Built with Core PHP, MySQL, and Redis caching for CRM, mobile apps, websites, and third-party integrations.</p>
+            <p>High-performance REST API for Indian location data — States, Cities, Areas, and Pincodes. Built with Core PHP, MySQL, and  caching for CRM, mobile apps, websites, and third-party integrations.</p>
             <div class="badges">
                 <span class="badge get">GET Only</span>
                 <span class="badge">JSON / UTF-8</span>
-                <span class="badge cache">Redis Cache 24h</span>
+                <span class="badge cache"> Cache 24h</span>
                 <span class="badge">CORS Enabled</span>
                 <span class="badge">PHP 8+</span>
             </div>
@@ -579,7 +579,7 @@ function e(string $value): string
  
 
         <div class="footer">
-            Location Master API v1.1 · PHP 8+ · MySQL · Redis · Soft Dev India
+            Location Master API v1.1 · PHP 8+ · MySQL ·  · Soft Dev India
         </div>
     </main>
 </div>
