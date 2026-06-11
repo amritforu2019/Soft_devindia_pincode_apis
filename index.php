@@ -362,14 +362,14 @@ function e(string $value): string
             <a href="#search">Search by ID</a>
         </nav>
 
-        <nav class="nav-group">
+        <!-- <nav class="nav-group">
             <h4>Reference</h4>
             <a href="#schema">Database Schema</a>
             <a href="#cache">Redis Cache</a>
             <a href="#config">Configuration</a>
             <a href="#examples">Code Examples</a>
             <a href="#security">Security</a>
-        </nav>
+        </nav> -->
     </aside>
 
     <main class="main">
@@ -576,100 +576,7 @@ function e(string $value): string
             </div>
         </section>
 
-        <section id="schema">
-            <h2>Database Schema</h2>
-            <div class="schema">states
-├── state_id (PK)
-└── state_name
-
-cities
-├── city_id (PK)
-├── state_id (FK → states)
-└── city_name
-
-areas
-├── area_id (PK)
-├── city_id (FK → cities)
-├── area_name
-└── pincode</div>
-        </section>
-
-        <section id="cache">
-            <h2>Redis Cache Strategy</h2>
-            <ol>
-                <li>Check Redis for the cache key.</li>
-                <li>If found → return cached JSON immediately.</li>
-                <li>If miss → query MySQL → store in Redis (TTL: 86400s) → return response.</li>
-            </ol>
-            <table>
-                <thead><tr><th>Endpoint</th><th>Cache Key</th></tr></thead>
-                <tbody>
-                    <tr><td>States list</td><td><code>LOC:STATE_LIST</code></td></tr>
-                    <tr><td>Cities by state</td><td><code>LOC:CITY_{state_id}</code></td></tr>
-                    <tr><td>Areas by city</td><td><code>LOC:AREA_{city_id}</code></td></tr>
-                    <tr><td>Pincode lookup</td><td><code>LOC:PIN_{pincode}</code></td></tr>
-                    <tr><td>Search by state ID</td><td><code>LOC:SEARCH_STATE_{state_id}</code></td></tr>
-                    <tr><td>Search by city ID</td><td><code>LOC:SEARCH_CITY_{city_id}</code></td></tr>
-                    <tr><td>Search by area ID</td><td><code>LOC:SEARCH_AREA_{area_id}</code></td></tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="config">
-            <h2>Configuration</h2>
-            <p>Edit <code>config/env.php</code> or set environment variables:</p>
-            <table>
-                <thead><tr><th>Variable</th><th>Default</th><th>Description</th></tr></thead>
-                <tbody>
-                    <tr><td><code>DB_HOST</code></td><td>127.0.0.1</td><td>MySQL host</td></tr>
-                    <tr><td><code>DB_NAME</code></td><td>location_master</td><td>Database name</td></tr>
-                    <tr><td><code>REDIS_HOST</code></td><td>127.0.0.1</td><td>Redis host</td></tr>
-                    <tr><td><code>REDIS_PASSWORD</code></td><td>—</td><td>Redis auth password</td></tr>
-                    <tr><td><code>JWT_ENABLED</code></td><td>false</td><td>Enable JWT auth</td></tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="examples">
-            <h2>Integration Examples</h2>
-
-            <h3>JavaScript (Fetch)</h3>
-            <pre><code>const baseUrl = '<?= e($apiUrl) ?>';
-
-async function getCities(stateId) {
-  const res = await fetch(`${baseUrl}?action=cities&state_id=${stateId}`);
-  return res.json();
-}
-
-async function searchByAreaId(areaId) {
-  const res = await fetch(`${baseUrl}?action=search&area_id=${areaId}`);
-  return res.json();
-}</code></pre>
-
-            <h3>cURL</h3>
-            <pre><code>curl "<?= e($apiUrl) ?>?action=states"
-curl "<?= e($apiUrl) ?>?action=search&state_id=1"
-curl "<?= e($apiUrl) ?>?action=pincode&pin=221005"</code></pre>
-
-            <h3>CRM / Mobile App Flow</h3>
-            <ol>
-                <li><code>action=states</code> → State dropdown</li>
-                <li><code>action=cities&amp;state_id={id}</code> → City dropdown</li>
-                <li><code>action=areas&amp;city_id={id}</code> → Area dropdown</li>
-                <li><code>action=pincode&amp;pin={pin}</code> → Auto-fill address</li>
-                <li><code>action=search&amp;area_id={id}</code> → Fetch area by ID</li>
-            </ol>
-        </section>
-
-        <section id="security">
-            <h2>Security</h2>
-            <ul>
-                <li>Prepared statements — SQL injection safe</li>
-                <li>Input validation on all parameters</li>
-                <li>Generic client errors; details logged to <code>/logs/api_errors.log</code></li>
-                <li>Direct access to <code>/config</code>, <code>/helpers</code>, <code>/logs</code> blocked</li>
-            </ul>
-        </section>
+ 
 
         <div class="footer">
             Location Master API v1.1 · PHP 8+ · MySQL · Redis · Soft Dev India
